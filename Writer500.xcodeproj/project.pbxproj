@@ -52,6 +52,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AFEE4E782F030ED100F8E5C0 /* Build configuration list for PBXNativeTarget "Writer500" */;
 			buildPhases = (
+				AFEE4EB32F04748200F8E5C0 /* Validate buid version number against changelog version number  */,
 				AFEE4E692F030ECF00F8E5C0 /* Sources */,
 				AFEE4E6A2F030ECF00F8E5C0 /* Frameworks */,
 				AFEE4E6B2F030ECF00F8E5C0 /* Resources */,
@@ -113,6 +114,29 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AFEE4EB32F04748200F8E5C0 /* Validate buid version number against changelog version number  */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/$(PROJECT_NAME)/CHANGELOG.txt",
+			);
+			name = "Validate buid version number against changelog version number ";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\nset -e\n\n# Xcode will supply this if you add $(SRCROOT)/$(PROJECT_NAME)/CHANGELOG.txt to \"Input Files\".\n# If you don't set an Input File, we fall back to the default path below.\nCHANGELOG=\"${SCRIPT_INPUT_FILE_0:-${SRCROOT}/${PROJECT_NAME}/CHANGELOG.txt}\"\n\necho \"Validate version: MARKETING_VERSION=$MARKETING_VERSION\"\necho \"Validate version: using changelog at: $CHANGELOG\"\n\nif [ ! -f \"$CHANGELOG\" ]; then\n  echo \"------------------------------------------------------------\"\n  echo \"error: CHANGELOG.txt not found (build stopped)\"\n  echo \"------------------------------------------------------------\"\n  echo \"Tried:\"\n  echo \"  $CHANGELOG\"\n  echo \"\"\n  echo \"Fix:\"\n  echo \"  Target -> Build Phases -> (this Run Script)\"\n  echo \"  Add an Input File:\"\n  echo \"    \\$(SRCROOT)/\\$(PROJECT_NAME)/CHANGELOG.txt\"\n  echo \"------------------------------------------------------------\"\n  exit 1\nfi\n\n# Your file starts with: 0.1.1 - 2025-12-29\nCHANGELOG_LINE=$(grep -m 1 -E '^[[:space:]]*[0-9]+\\.[0-9]+\\.[0-9]+' \"$CHANGELOG\" || true)\nCHANGELOG_VER=$(printf \"%s\" \"$CHANGELOG_LINE\" | awk '{print $1}' || true)\n\nif [ -z \"$CHANGELOG_VER\" ]; then\n  echo \"------------------------------------------------------------\"\n  echo \"error: Could not extract version from CHANGELOG.txt (build stopped)\"\n  echo \"------------------------------------------------------------\"\n  echo \"Expected first entry like:\"\n  echo \"  0.1.1 - 2025-12-29\"\n  echo \"\"\n  echo \"File:\"\n  echo \"  $CHANGELOG\"\n  echo \"------------------------------------------------------------\"\n  exit 1\nfi\n\nif [ \"$MARKETING_VERSION\" != \"$CHANGELOG_VER\" ]; then\n  echo \"------------------------------------------------------------\"\n  echo \"error: Version mismatch (build stopped)\"\n  echo \"------------------------------------------------------------\"\n  echo \"Xcode MARKETING_VERSION : $MARKETING_VERSION\"\n  echo \"CHANGELOG.txt version   : $CHANGELOG_VER\"\n  echo \"\"\n  echo \"CHANGELOG first line:\"\n  echo \"  $CHANGELOG_LINE\"\n  echo \"\"\n  echo \"Fix (Xcode 26.2):\"\n  echo \"  Project Navigator -> select the PROJECT\"\n  echo \"  -> select the Writer500 TARGET\"\n  echo \"  -> General tab\"\n  echo \"  -> Identity section\"\n  echo \"  -> set 'Version' to: $CHANGELOG_VER\"\n  echo \"------------------------------------------------------------\"\n  exit 1\nfi\n\necho \"Version OK: $MARKETING_VERSION (matches CHANGELOG.txt)\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AFEE4E692F030ECF00F8E5C0 /* Sources */ = {
@@ -272,7 +296,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mattgay.Writer500;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -314,7 +338,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mattgay.Writer500;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   LastUpgradeVersion = "2620"
+   version = "1.7">
+   <BuildAction
+      parallelizeBuildables = "YES"
+      buildImplicitDependencies = "YES"
+      buildArchitectures = "Automatic">
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AFEE4E6C2F030ECF00F8E5C0"
+               BuildableName = "Writer500.app"
+               BlueprintName = "Writer500"
+               ReferencedContainer = "container:Writer500.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <TestAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      shouldAutocreateTestPlan = "YES">
+   </TestAction>
+   <LaunchAction
+      buildConfiguration = "Release"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      launchStyle = "0"
+      useCustomWorkingDirectory = "NO"
+      ignoresPersistentStateOnLaunch = "NO"
+      debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
+      allowLocationSimulation = "YES">
+      <PostActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Run Script"
+               scriptText = "set -euo pipefail&#10;&#10;APP_NAME=&quot;Writer500&quot;&#10;DEST=&quot;/Applications/${APP_NAME}.app&quot;&#10;SRC=&quot;${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}&quot;&#10;&#10;echo &quot;Installing ${APP_NAME}...&quot;&#10;echo &quot;Source: ${SRC}&quot;&#10;echo &quot;Dest  : ${DEST}&quot;&#10;&#10;osascript -e &quot;tell application \&quot;${APP_NAME}\&quot; to quit&quot; &gt;/dev/null 2&gt;&amp;1 || true&#10;sleep 0.5&#10;&#10;rm -rf &quot;$DEST&quot;&#10;ditto &quot;$SRC&quot; &quot;$DEST&quot;&#10;xattr -dr com.apple.quarantine &quot;$DEST&quot; &gt;/dev/null 2&gt;&amp;1 || true&#10;&#10;echo &quot;&#x2705; Installed to /Applications&quot;&#10;">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "AFEE4E6C2F030ECF00F8E5C0"
+                     BuildableName = "Writer500.app"
+                     BlueprintName = "Writer500"
+                     ReferencedContainer = "container:Writer500.xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
+            </ActionContent>
+         </ExecutionAction>
+      </PostActions>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "AFEE4E6C2F030ECF00F8E5C0"
+            BuildableName = "Writer500.app"
+            BlueprintName = "Writer500"
+            ReferencedContainer = "container:Writer500.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+   </LaunchAction>
+   <ProfileAction
+      buildConfiguration = "Release"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      savedToolIdentifier = ""
+      useCustomWorkingDirectory = "NO"
+      debugDocumentVersioning = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "AFEE4E6C2F030ECF00F8E5C0"
+            BuildableName = "Writer500.app"
+            BlueprintName = "Writer500"
+            ReferencedContainer = "container:Writer500.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+   </ProfileAction>
+   <AnalyzeAction
+      buildConfiguration = "Debug">
+   </AnalyzeAction>
+   <ArchiveAction
+      buildConfiguration = "Release"
+      revealArchiveInOrganizer = "YES">
+   </ArchiveAction>
+</Scheme>
