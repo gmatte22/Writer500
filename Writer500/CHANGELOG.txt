@@ -1,0 +1,11 @@
+Changelog
+
+0.0.2 (Build 1) - 2025-12-29
+- Remember window size and position
+- Added change log and About screen
+
+0.0.1 (Build 1) - 2025-12-29
+- Initial release, base version
+- Includes text editor and progress bar at the bottom
+- Minimal UI commands (font size, reset)
+- Added Focus Mode toggle (Cmd+Shift+F)
