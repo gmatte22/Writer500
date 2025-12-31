@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct AboutView: View {
-    private var appVersion: String {
-        Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "?"
-    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -20,18 +17,21 @@ struct AboutView: View {
 
             Text("Version \(appVersion)")
                 .font(.subheadline)
-                .foregroundStyle(.secondary)
 
-            if let changelogDate = changelogModifiedDate {
-                Text("Changelog updated: \(changelogDate)")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-            }
+            Text("Developed by Matt Gay\nSuggestions and feedback are welcome")
+                .font(.body)
+                .foregroundStyle(.secondary)
 
             Divider()
 
             Text("What's New")
                 .font(.headline)
+
+            if let changelogDate = changelogModifiedDate {
+                Text("Changelog last updated: \(changelogDate)")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
 
             ScrollView {
                 Text(changelogText)
@@ -45,9 +45,15 @@ struct AboutView: View {
             Spacer(minLength: 0)
         }
         .padding(18)
+        .padding(.top, 50)
         .frame(width: 520, height: 360)
     }
 
+    // MARK: - Private helpers
+
+    private var appVersion: String {
+        Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "?"
+    }
 
     private var changelogText: String {
         // Loads CHANGELOG.txt shipped inside the app bundle.
