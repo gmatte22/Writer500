@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		AF241A9D2F09E1AB0032DFA6 /* Textual in Frameworks */ = {isa = PBXBuildFile; productRef = AF241A9C2F09E1AB0032DFA6 /* Textual */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		AFEE4E6D2F030ECF00F8E5C0 /* Writer500.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Writer500.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF241A9D2F09E1AB0032DFA6 /* Textual in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +71,7 @@
 			);
 			name = Writer500;
 			packageProductDependencies = (
+				AF241A9C2F09E1AB0032DFA6 /* Textual */,
 			);
 			productName = Writer500;
 			productReference = AFEE4E6D2F030ECF00F8E5C0 /* Writer500.app */;
@@ -95,6 +101,9 @@
 			);
 			mainGroup = AFEE4E642F030ECF00F8E5C0;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				AF241A9B2F09E1AB0032DFA6 /* XCRemoteSwiftPackageReference "textual" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = AFEE4E6E2F030ECF00F8E5C0 /* Products */;
 			projectDirPath = "";
@@ -373,6 +382,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AF241A9B2F09E1AB0032DFA6 /* XCRemoteSwiftPackageReference "textual" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/gonzalezreal/textual";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AF241A9C2F09E1AB0032DFA6 /* Textual */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF241A9B2F09E1AB0032DFA6 /* XCRemoteSwiftPackageReference "textual" */;
+			productName = Textual;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AFEE4E652F030ECF00F8E5C0 /* Project object */;
 }

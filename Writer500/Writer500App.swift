@@ -22,6 +22,11 @@ struct Writer500App: App {
             AboutView()
         }
         .windowResizability(.contentSize)
+
+        Window("Writer500 Help", id: "help") {
+                HelpView()
+            }
+        .windowResizability(.contentSize)
     }
 }
 
@@ -68,6 +73,13 @@ struct Writer500Commands: Commands {
                 focusMode.toggle()
             }
             .keyboardShortcut("f", modifiers: [.command, .shift])
+        }
+
+        CommandGroup(replacing: .help) {
+            Button("Writer500 Help") {
+                openWindow(id: "help")
+            }
+            .keyboardShortcut("?", modifiers: [.command])
         }
     }
 }
