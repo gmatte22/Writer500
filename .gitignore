@@ -1,0 +1,11 @@
+# Xcode
+.DS_Store
+xcuserdata/
+DerivedData/
+.build/
+*.xcscmblueprint
+*.xccheckout
+
+# SwiftPM / packages
+.swiftpm/
+Package.resolved
